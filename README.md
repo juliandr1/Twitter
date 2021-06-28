@@ -356,7 +356,7 @@ AsyncTask<Tweet, Void, Void> task = new AsyncTask<Tweet, Void, Void>() {
   task.execute(tweets);
 ```
 
-That's all you need to get started. From here, hook up your activities and their behavior, adjust your models and add more REST endpoints.
+That's all you need to get started. From here, hook up your com.codepath.apps.restclienttemplate.activities and their behavior, adjust your models and add more REST endpoints.
 
 ### Extras
 
