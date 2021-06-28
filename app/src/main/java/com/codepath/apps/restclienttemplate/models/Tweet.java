@@ -54,15 +54,13 @@ public class Tweet {
             if (diff < MINUTE_MILLIS) {
                 return "just now";
             } else if (diff < 2 * MINUTE_MILLIS) {
-                return "a minute ago";
+                return "1m";
             } else if (diff < 50 * MINUTE_MILLIS) {
                 return diff / MINUTE_MILLIS + "m";
             } else if (diff < 90 * MINUTE_MILLIS) {
-                return "an hour ago";
+                return "1h";
             } else if (diff < 24 * HOUR_MILLIS) {
                 return diff / HOUR_MILLIS + "h";
-            } else if (diff < 48 * HOUR_MILLIS) {
-                return "yesterday";
             } else {
                 return diff / DAY_MILLIS + "d";
             }
