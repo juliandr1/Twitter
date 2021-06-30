@@ -1,6 +1,10 @@
 package com.codepath.apps.restclienttemplate.models;
 
 import android.util.Log;
+import android.widget.ImageView;
+
+import com.codepath.apps.restclienttemplate.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,12 +28,21 @@ public class Tweet {
     public String body;
     public String createdAt;
     public User user;
+    public String imageUrl;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
+
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = tweet.getRelativeTimeAgo(jsonObject.getString("created_at"));
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        // Get the entities object
+        JSONObject jsonObj = jsonObject.getJSONObject("entities");
+        // Check if media is present
+        if (jsonObj.has("media")) {
+            tweet.imageUrl = jsonObj.getJSONArray("media").getJSONObject(0).get("media_url_https").toString();
+        }
+
         return tweet;
     }
 
