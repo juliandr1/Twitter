@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvReplyBody"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="0dp"
+    android:background="#FFFFFF"
+    tools:context=".activities.ComposeActivity">
+
+    <Button
+        android:id="@+id/btnDetailPublish"
+        android:layout_width="58dp"
+        android:layout_height="33dp"
+        android:layout_below="@+id/etDetail"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="#801da1f2"
+        android:text="@string/tweet"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDetail"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <EditText
+        android:id="@+id/etDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDetailRetweet"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Tweet your reply"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:textColor="#171616"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toEndOf="@+id/ivDetailProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvReplyStatement" />
+
+    <TextView
+        android:id="@+id/tvDetailTime"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivDetailEmbed"
+        android:layout_alignStart="@+id/ivDetailProfile"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="125dp"
+        app:layout_constraintStart_toEndOf="@+id/tvDetailScreenName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailScreenName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDetailName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="28dp"
+        android:layout_toEndOf="@+id/ivDetailProfile"
+        app:layout_constraintStart_toEndOf="@+id/tvDetailName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetailTweet"
+        android:layout_width="395dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/ivDetailProfile"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/ivReplyProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toEndOf="@+id/ivReplyProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailTime" />
+
+    <TextView
+        android:id="@+id/tvDetailName"
+        android:layout_width="306dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_toEndOf="@+id/ivDetailProfile"
+        app:layout_constraintStart_toEndOf="@+id/ivReplyProfile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_vector_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivDetailProfile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReplyStatement"
+        tools:src="@tools:sample/avatars"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/ivDetailEmbed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDetailTweet"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="13dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnDetailReply"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvDetailTime"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/ic_twitter_reply" />
+
+    <Button
+        android:id="@+id/btnDetailRetweet"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvDetailTime"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@+id/btnDetailReply"
+        android:background="@drawable/ic_vector_retweet_stroke" />
+
+    <Button
+        android:id="@+id/btnDetailLike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvDetailTime"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@+id/btnDetailRetweet"
+        android:background="@drawable/ic_vector_heart_stroke" />
+
+</RelativeLayout>

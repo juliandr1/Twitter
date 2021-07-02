@@ -21,13 +21,19 @@ import org.parceler.Parcels;
 
 import okhttp3.Headers;
 
+/*
+    ComposeActivity.java is a class that will allow the user to compose a brand new tweet, which
+    will then be put at the top of the RecyclerView (aka timeline), given Twitter tweet
+    restrictions. A character counter will also be included.
+ */
+
 public class ComposeActivity extends AppCompatActivity {
 
     public static String TAG = "ComposeActivity";
     public static final int MAX_TWEET_LENGTH = 280;
 
     EditText etCompose;
-    Button btnTweet;
+    Button btnComposeTweet, btnComposeExit;
     TwitterClient client;
 
     @Override
@@ -35,16 +41,26 @@ public class ComposeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
 
+        // Find variables and get client
         etCompose = findViewById(R.id.etCompose);
-        btnTweet = findViewById(R.id.btnTweet);
         client = TwitterApp.getRestClient(this);
 
-        // Set click listener on button
+        btnComposeExit = findViewById(R.id.btnComposeExit);
+        // Set onClickListener to see if the user wants to exit out of the activity.
+        btnComposeExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-        btnTweet.setOnClickListener(new View.OnClickListener() {
+        btnComposeTweet = findViewById(R.id.btnComposeTweet);
+        // Set onClickListener to see if user is ready to compose tweet
+        btnComposeTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tweetContent = etCompose.getText().toString();
+                // Check that the tweet matches with Twitters guidelines
                 if (tweetContent.isEmpty()) {
                     Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty", Toast.LENGTH_LONG).show();
                     return;
@@ -53,16 +69,14 @@ public class ComposeActivity extends AppCompatActivity {
                     Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Toast.makeText(ComposeActivity.this, tweetContent , Toast.LENGTH_LONG).show();
 
                 // Make an api call to Twitter to publish the tweet
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
-                        Log.i(TAG, "onSuccess to publish tweet");
                         try {
                             Tweet tweet = Tweet.fromJson(json.jsonObject);
-                            Log.i(TAG, "Published tweet says: " + tweet);
+                            // Create a new intent and pass the tweet
                             Intent intent = new Intent();
                             intent.putExtra("tweet", Parcels.wrap(tweet));
                             // set result code and bundle data for response

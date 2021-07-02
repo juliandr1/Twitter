@@ -10,6 +10,7 @@ public class User {
     public String name;
     public String screenName;
     public String profileImageUrl;
+    public long id;
 
     // Empty constructor needed by the Parceler library
     public User() {}
@@ -19,6 +20,7 @@ public class User {
         user.name = jsonObject.getString("name");
         user.screenName = jsonObject.getString("screen_name");
         user.profileImageUrl = jsonObject.getString("profile_image_url_https");
+        user.id = jsonObject.getLong("id");
         return user;
     }
 }

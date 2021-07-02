@@ -26,9 +26,10 @@ public class Tweet {
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
     public String body;
-    public String createdAt;
+    public String createdAt, createdAtREG;
     public User user;
     public String imageUrl;
+    public long id;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
 
@@ -36,6 +37,9 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = tweet.getRelativeTimeAgo(jsonObject.getString("created_at"));
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.id = jsonObject.getLong("id");
+        tweet.createdAtREG = jsonObject.getString("created_at");
+
         // Get the entities object
         JSONObject jsonObj = jsonObject.getJSONObject("entities");
         // Check if media is present

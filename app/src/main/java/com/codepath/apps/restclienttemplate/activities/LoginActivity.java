@@ -14,6 +14,11 @@ import com.codepath.apps.restclienttemplate.models.SampleModel;
 import com.codepath.apps.restclienttemplate.models.SampleModelDao;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 
+/*
+	LoginActivity.java is the login page for all new or returning users. Clicking the login
+	button will bring users to twitter.com to login into their account.
+ */
+
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 
 	SampleModelDao sampleModelDao;
